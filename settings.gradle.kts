@@ -22,3 +22,5 @@ dependencyResolutionManagement {
 rootProject.name = "CountriesApp"
 include(":app")
 include(":core")
+include(":features")
+include(":features:profile")
