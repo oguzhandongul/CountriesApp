@@ -1,0 +1,24 @@
+{
+  "name": "Oguzhan Dongul",
+  "profileImage": "https://avatars.githubusercontent.com/u/6702583?v=4",
+  "summary": "Senior Mobile Engineer with a decade of expertise in Native Android development, specializing in Java and Kotlin, as well as proficiency in iOS development, UI&UX design and Automation projects. Recognized as a top 5% contributor on StackOverflow.com with an impressive reputation score of 8,000.\nNotable achievements include earning the \"Top Developer\" badge and having a project featured in \"The Best Applications of 2015\" on Google Play. Earned a BS degree from Bilkent University in 2014, securing two prestigious accolades: the Best Senior Project Award and the Best Intern Award. Senior project focused on developing an advanced mobile and web-based communication and management system for hotels and their customers.\nIn addition to professional experience, I actively develop and contribute to open-source Android libraries, fostering innovation and collaboration within the developer community.",
+  "education": [
+    {
+      "title": "BS Degree",
+      "organization": "Bilkent University",
+      "duration": "2009 - 2014"
+    }
+  ],
+  "experience": [
+    {
+      "title": "Senior Android Engineer",
+      "organization": "Getir ",
+      "duration": "2018 - 2024"
+    },
+    {
+      "title": "Lead Mobile Developer",
+      "organization": "Mobillium",
+      "duration": "2013 - 2018"
+    }
+  ]
+}

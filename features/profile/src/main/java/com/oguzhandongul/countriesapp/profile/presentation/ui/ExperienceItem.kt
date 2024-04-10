@@ -7,7 +7,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.oguzhandongul.countriesapp.core.ui.theme.CountriesTypography
 import com.oguzhandongul.countriesapp.core.ui.theme.Dimensions
-import com.oguzhandongul.countriesapp.profile.data.Experience
+import com.oguzhandongul.countriesapp.profile.data.model.Experience
 
 @Composable
 fun ExperienceItem(experience: Experience) {

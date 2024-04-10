@@ -1,4 +1,4 @@
-package com.oguzhandongul.countriesapp.profile.data
+package com.oguzhandongul.countriesapp.profile.data.model
 
 data class Experience(
     val title: String,
