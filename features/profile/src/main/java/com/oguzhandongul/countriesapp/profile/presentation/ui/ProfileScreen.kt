@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.oguzhandongul.countriesapp.core.ui.component.ErrorView
 import com.oguzhandongul.countriesapp.core.ui.component.LoadingAnimation
 import com.oguzhandongul.countriesapp.profile.presentation.states.ProfileUiState
 import com.oguzhandongul.countriesapp.profile.presentation.viewmodel.ProfileViewModel
@@ -11,6 +12,8 @@ import com.oguzhandongul.countriesapp.profile.presentation.viewmodel.ProfileView
 @Composable
 fun ProfileScreen(viewModel: ProfileViewModel = hiltViewModel()) {
     val uiState by viewModel.uiState.collectAsState()
+
+    val onRetryClicked: () -> Unit = { viewModel.loadProfileData() }
 
     when (uiState) {
         ProfileUiState.Loading -> {
@@ -21,6 +24,11 @@ fun ProfileScreen(viewModel: ProfileViewModel = hiltViewModel()) {
             ProfileContent((uiState as ProfileUiState.Success).profileData)
         }
 
-        is ProfileUiState.Error -> {}
+        is ProfileUiState.Error -> {
+            ErrorView(
+                exception = Throwable((uiState as ProfileUiState.Error).errorMessage),
+                onClick = onRetryClicked
+            )
+        }
     }
 }

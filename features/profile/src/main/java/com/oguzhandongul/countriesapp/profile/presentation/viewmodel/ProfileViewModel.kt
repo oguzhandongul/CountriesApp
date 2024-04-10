@@ -1,10 +1,7 @@
 package com.oguzhandongul.countriesapp.profile.presentation.viewmodel
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.oguzhandongul.countriesapp.profile.data.model.ProfileData
 import com.oguzhandongul.countriesapp.profile.domain.usecase.GetProfileDataUseCase
 import com.oguzhandongul.countriesapp.profile.presentation.states.ProfileUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -26,7 +23,7 @@ class ProfileViewModel @Inject constructor(
         loadProfileData()
     }
 
-    private fun loadProfileData() {
+    fun loadProfileData() {
         viewModelScope.launch {
             try {
                 val profileDataResult = getProfileDataUseCase()
