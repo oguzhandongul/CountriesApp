@@ -1,6 +1,6 @@
 [versions]
 agp = "8.3.1"
-kotlin = "1.9.0"
+kotlin = "1.9.23"
 coreKtx = "1.12.0"
 junit = "4.13.2"
 junitVersion = "1.1.5"
@@ -20,6 +20,7 @@ retrofit-logger = "4.12.0"
 hilt = "2.51"
 ksp = "1.9.20-1.0.14"
 coil = "2.6.0"
+navigation = "2.7.7"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -50,6 +51,7 @@ kspApi = { group = "com.google.devtools.ksp", name = "symbol-processing-api", ve
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
 hilt-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hilt" }
 coil = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil"}
+navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigation"}
 
 
 [plugins]

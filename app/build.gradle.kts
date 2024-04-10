@@ -42,13 +42,14 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.6"
+        kotlinCompilerExtensionVersion = "1.5.11"
     }
 }
 
 dependencies {
 
     implementation(project(":core"))
+    implementation(project(":features:profile"))
 
     implementation(libs.timber)
     implementation(libs.androidx.core.ktx)
@@ -60,6 +61,7 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation(libs.navigation.compose)
 
     implementation(libs.androidx.core.ktx)
     testImplementation(libs.junit)
