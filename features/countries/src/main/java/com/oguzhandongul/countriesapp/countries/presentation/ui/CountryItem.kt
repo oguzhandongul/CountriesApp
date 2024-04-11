@@ -7,7 +7,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
-import com.oguzhandongul.countriesapp.core.Screen
+import com.oguzhandongul.countriesapp.core.utils.Screen
 import com.oguzhandongul.countriesapp.core.ui.theme.CountriesTypography
 import com.oguzhandongul.countriesapp.core.ui.theme.Dimensions
 import androidx.compose.material3.Card

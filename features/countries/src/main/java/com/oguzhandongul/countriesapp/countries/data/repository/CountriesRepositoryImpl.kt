@@ -8,15 +8,28 @@ import com.oguzhandongul.countriesapp.countries.domain.model.CountryDetail
 import com.oguzhandongul.countriesapp.countries.domain.repository.CountriesRepository
 import javax.inject.Inject
 
-class CountriesRepositoryImpl @Inject constructor(private val apiService: ApiService, private val context: Context) :
+class CountriesRepositoryImpl @Inject constructor(
+    private val apiService: ApiService,
+    private val context: Context
+) :
     CountriesRepository {
     override suspend fun getCountries(): Result<List<String>> {
-        val stringArray = context.resources.getStringArray(R.array.countries_array)
-        return Result.success(stringArray.asList())
+        return try {
+            val stringArray = context.resources.getStringArray(R.array.countries_array)
+            Result.success(stringArray.asList())
+        } catch (exception: Exception) {
+            //Handles Network or Backend Errors
+            Result.failure(exception)
+        }
     }
 
     override suspend fun getCountryData(name: String): Result<CountryDetail> {
-        val response = apiService.getCountryDetails(name)[0]
-        return Result.success(response.toCountryDetail())
+        return try {
+            val response = apiService.getCountryDetails(name)[0]
+            Result.success(response.toCountryDetail())
+        } catch (exception: Exception) {
+            //Handles Network or Backend Errors
+            Result.failure(exception)
+        }
     }
 }

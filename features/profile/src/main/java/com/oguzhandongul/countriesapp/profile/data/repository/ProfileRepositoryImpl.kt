@@ -11,8 +11,16 @@ class ProfileRepositoryImpl @Inject constructor(private val context: Context) : 
     private val profileDataAdapter = ProfileDataAdapter
 
     override suspend fun getProfileData(): Result<ProfileData> {
-        val inputStream = context.resources.openRawResource(R.raw.profile)
-        val json = inputStream.bufferedReader().use { it.readText() }
-        return Result.success(profileDataAdapter.adapter.fromJson(json)!!)
+        return try {
+            val inputStream = context.resources.openRawResource(R.raw.profile)
+            val json = inputStream.bufferedReader().use { it.readText() }
+            val response = profileDataAdapter.adapter.fromJson(json)
+            response?.run {
+                Result.success(this)
+            } ?: throw Exception()
+        } catch (exception: Exception) {
+            Result.failure(exception)
+        }
+
     }
 }

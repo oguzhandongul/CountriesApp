@@ -1,10 +1,13 @@
 package com.oguzhandongul.countriesapp.core.di
 
+import android.content.Context
+import com.oguzhandongul.countriesapp.core.utils.ResourceHelper
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -20,6 +23,12 @@ private const val BASE_URL = "https://restcountries.com/"
 @Module
 @InstallIn(SingletonComponent::class)
 object CoreModule {
+
+    @Provides
+    @Singleton
+    fun provideResourceHelper(@ApplicationContext context: Context): ResourceHelper {
+        return ResourceHelper(context)
+    }
 
     @Provides
     @Singleton

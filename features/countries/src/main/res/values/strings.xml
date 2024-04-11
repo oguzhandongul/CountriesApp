@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="choose_country_title">Choose a Country:</string>
+    <string name="content_capital_title">Capital</string>
+    <string name="content_currency_title">Currency</string>
+    <string name="content_area_title">Area</string>
+    <string name="content_population_title">Population</string>
+    <string name="content_continents_title">Continents</string>
+    <string name="content_languages_title">Languages</string>
+    <string name="error_loading_list">Failed to load country list</string>
+    <string name="error_loading_detail">Failed to load country detail</string>
+</resources>

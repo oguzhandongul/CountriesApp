@@ -9,9 +9,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavController
 import com.oguzhandongul.countriesapp.core.ui.theme.CountriesTypography
 import com.oguzhandongul.countriesapp.core.ui.theme.Dimensions
+import com.oguzhandongul.countriesapp.countries.R
 
 @Composable
 fun CountriesListContent(navController: NavController, countryList: List<String>) {
@@ -22,7 +24,7 @@ fun CountriesListContent(navController: NavController, countryList: List<String>
     ) {
         item {
             Text(
-                text = "Choose a Country:",
+                text = stringResource(R.string.choose_country_title),
                 modifier = Modifier.fillMaxWidth().padding(Dimensions.xlarge),
                 style = CountriesTypography.headlineMedium
             )

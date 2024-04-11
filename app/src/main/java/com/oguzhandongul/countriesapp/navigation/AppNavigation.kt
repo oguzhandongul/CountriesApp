@@ -16,7 +16,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.oguzhandongul.countriesapp.core.Screen
+import com.oguzhandongul.countriesapp.core.utils.Screen
 import com.oguzhandongul.countriesapp.countries.presentation.ui.CountryDetailScreen
 import com.oguzhandongul.countriesapp.presentation.MainViewModel
 import com.oguzhandongul.countriesapp.countries.presentation.ui.CountrySelectionScreen

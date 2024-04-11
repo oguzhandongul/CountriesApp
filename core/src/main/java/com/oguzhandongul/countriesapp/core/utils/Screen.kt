@@ -1,4 +1,4 @@
-package com.oguzhandongul.countriesapp.core
+package com.oguzhandongul.countriesapp.core.utils
 
 sealed class Screen(val route: String) {
     object Countries : Screen("Countries")
