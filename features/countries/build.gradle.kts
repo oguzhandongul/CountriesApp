@@ -55,10 +55,12 @@ dependencies {
     implementation(libs.moshi)
     implementation(libs.moshi.adapter)
     implementation(libs.moshi.kotlin)
-    implementation(libs.hilt.android)
-    implementation(libs.hilt.navigation.compose)
-
     implementation(libs.retrofit)
+    implementation(libs.retrofit.logger)
+    implementation(libs.retrofit.converter)
+
+    implementation(libs.hilt.navigation.compose)
+    implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
 
     implementation(libs.androidx.core.ktx)

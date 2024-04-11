@@ -16,6 +16,8 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.oguzhandongul.countriesapp.core.Screen
+import com.oguzhandongul.countriesapp.countries.presentation.ui.CountryDetailScreen
 import com.oguzhandongul.countriesapp.presentation.MainViewModel
 import com.oguzhandongul.countriesapp.countries.presentation.ui.CountrySelectionScreen
 import com.oguzhandongul.countriesapp.profile.presentation.ui.ProfileScreen
@@ -33,7 +35,7 @@ fun AppNavigation() {
                 items.forEachIndexed { _, screen ->
                     NavigationBarItem(
                         icon = { when (screen) {
-                            Screen.Countries -> Icon(Icons.Filled.LocationOn, contentDescription = "Countries")
+                            Screen.Countries, Screen.CountryDetail -> Icon(Icons.Filled.LocationOn, contentDescription = "Countries")
                             Screen.Profile   -> Icon(Icons.Filled.Person, contentDescription = "Profile")
                         }},
                         label = { Text(screen.route) },
@@ -57,6 +59,12 @@ fun AppNavigation() {
         ) {
             composable(Screen.Countries.route) { CountrySelectionScreen(navController) } // Use ViewModel
             composable(Screen.Profile.route) { ProfileScreen(navController) }       // Use ViewModel
+            composable(  "${Screen.CountryDetail.route}/{name}"){ backStackEntry ->
+                val name = backStackEntry.arguments?.getString("name")
+                if (name != null) {
+                    CountryDetailScreen(name = name)
+                }
+            }
         }
     }
 }

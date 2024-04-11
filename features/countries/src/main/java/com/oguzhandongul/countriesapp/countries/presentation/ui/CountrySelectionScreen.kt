@@ -25,7 +25,10 @@ fun CountrySelectionScreen(
         }
 
         is CountriesUiState.Success -> {
-            CountriesListContent((uiState as CountriesUiState.Success).countryList)
+            CountriesListContent(
+                countryList = (uiState as CountriesUiState.Success).countryList,
+                navController = navController
+            )
         }
 
         is CountriesUiState.Error -> {

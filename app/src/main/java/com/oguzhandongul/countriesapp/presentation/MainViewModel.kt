@@ -1,7 +1,7 @@
 package com.oguzhandongul.countriesapp.presentation
 
 import androidx.lifecycle.ViewModel
-import com.oguzhandongul.countriesapp.navigation.Screen
+import com.oguzhandongul.countriesapp.core.Screen
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
