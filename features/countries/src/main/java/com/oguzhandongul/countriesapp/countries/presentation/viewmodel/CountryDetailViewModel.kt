@@ -20,12 +20,19 @@ class CountryDetailViewModel @Inject constructor(private val getCountryDetailUse
 
     fun loadCountryDetail(name: String) {
         viewModelScope.launch {
-            _uiState.value = CountryDetailUiState.Loading
-            val result = getCountryDetailUseCase(name).getOrNull()
-            if (result != null) {
-                _uiState.value = CountryDetailUiState.Success(result)
+            // Check if the current state is already success and we have the data
+            if (uiState.value is CountryDetailUiState.Success) {
+                val res = (_uiState.value as CountryDetailUiState.Success).countryDetail
+                CountryDetailUiState.Success(res)
             } else {
-                _uiState.value = CountryDetailUiState.Error("Failed to load country detail")
+                // else start with loading and handle the states
+                _uiState.value = CountryDetailUiState.Loading
+                val result = getCountryDetailUseCase(name).getOrNull()
+                _uiState.value = if (result != null) {
+                    CountryDetailUiState.Success(result)
+                } else {
+                    CountryDetailUiState.Error("Failed to load country detail")
+                }
             }
         }
     }
