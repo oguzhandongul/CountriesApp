@@ -13,9 +13,6 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object ProfileModule {
-    @Singleton
-    @Provides
-    fun provideContext(@ApplicationContext context: Context): Context = context
 
     @Singleton
     @Provides

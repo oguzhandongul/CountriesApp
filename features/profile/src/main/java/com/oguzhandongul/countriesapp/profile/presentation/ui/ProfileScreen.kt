@@ -4,13 +4,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavHostController
 import com.oguzhandongul.countriesapp.core.ui.component.ErrorView
 import com.oguzhandongul.countriesapp.core.ui.component.LoadingAnimation
 import com.oguzhandongul.countriesapp.profile.presentation.states.ProfileUiState
 import com.oguzhandongul.countriesapp.profile.presentation.viewmodel.ProfileViewModel
 
 @Composable
-fun ProfileScreen(viewModel: ProfileViewModel = hiltViewModel()) {
+fun ProfileScreen(navController: NavHostController, viewModel: ProfileViewModel = hiltViewModel()) {
     val uiState by viewModel.uiState.collectAsState()
 
     val onRetryClicked: () -> Unit = { viewModel.loadProfileData() }

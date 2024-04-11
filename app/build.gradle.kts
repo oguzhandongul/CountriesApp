@@ -51,6 +51,7 @@ dependencies {
 
     implementation(project(":core"))
     implementation(project(":features:profile"))
+    implementation(project(":features:countries"))
 
     implementation(libs.timber)
     implementation(libs.androidx.core.ktx)
