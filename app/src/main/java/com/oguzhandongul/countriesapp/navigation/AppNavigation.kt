@@ -1,5 +1,7 @@
 package com.oguzhandongul.countriesapp.navigation
 
+import androidx.compose.animation.AnimatedContentTransitionScope
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.LocationOn
@@ -59,7 +61,16 @@ fun AppNavigation() {
         ) {
             composable(Screen.Countries.route) { CountrySelectionScreen(navController) } // Use ViewModel
             composable(Screen.Profile.route) { ProfileScreen(navController) }       // Use ViewModel
-            composable(  "${Screen.CountryDetail.route}/{name}"){ backStackEntry ->
+            composable(  "${Screen.CountryDetail.route}/{name}", enterTransition = {
+                return@composable slideIntoContainer(
+                    AnimatedContentTransitionScope.SlideDirection.Up, tween(700)
+                )
+            },
+                popExitTransition = {
+                    return@composable slideOutOfContainer(
+                        AnimatedContentTransitionScope.SlideDirection.Down, tween(700)
+                    )
+                }){ backStackEntry ->
                 val name = backStackEntry.arguments?.getString("name")
                 if (name != null) {
                     CountryDetailScreen(name = name)

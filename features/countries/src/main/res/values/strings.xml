@@ -2,6 +2,8 @@
 <resources>
     <string name="choose_country_title">Choose a Country:</string>
     <string name="content_capital_title">Capital</string>
+    <string name="content_region_title">Region</string>
+    <string name="content_subregion_title">SubRegion</string>
     <string name="content_currency_title">Currency</string>
     <string name="content_area_title">Area</string>
     <string name="content_population_title">Population</string>

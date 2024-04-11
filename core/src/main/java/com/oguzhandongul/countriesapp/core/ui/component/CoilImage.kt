@@ -5,6 +5,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import coil.compose.rememberAsyncImagePainter
+import coil.request.CachePolicy
 import coil.request.ImageRequest
 import com.oguzhandongul.countriesapp.core.R
 
@@ -12,9 +13,11 @@ import com.oguzhandongul.countriesapp.core.R
 fun CoilImage(url: String, modifier: Modifier = Modifier) {
     val request = ImageRequest.Builder(LocalContext.current)
         .data(url)
-        .crossfade(true)
+        .crossfade(1000)
         .placeholder(R.drawable.placeholder_image_24)
         .error(R.drawable.placeholder_image_24)
+        .memoryCachePolicy(CachePolicy.ENABLED)
+        .memoryCacheKey(url)
         .build()
 
     val painter = rememberAsyncImagePainter(request)

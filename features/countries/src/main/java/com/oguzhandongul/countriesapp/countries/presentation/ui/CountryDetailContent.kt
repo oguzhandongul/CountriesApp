@@ -30,7 +30,8 @@ fun CountryDetailContent(countryDetail: CountryDetail) {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(Dimensions.medium).verticalScroll(scrollState),
+            .padding(Dimensions.medium)
+            .verticalScroll(scrollState),
         horizontalAlignment = Alignment.CenterHorizontally // Optional: center content horizontally
     ) {
         CoilImage(
@@ -52,6 +53,14 @@ fun CountryDetailContent(countryDetail: CountryDetail) {
         DetailItem(
             label = stringResource(id = R.string.content_capital_title),
             value = countryDetail.capital
+        )
+        DetailItem(
+            label = stringResource(id = R.string.content_region_title),
+            value = countryDetail.region
+        )
+        DetailItem(
+            label = stringResource(id = R.string.content_subregion_title),
+            value = countryDetail.subregion
         )
         DetailItem(
             label = stringResource(id = R.string.content_currency_title),
