@@ -30,7 +30,7 @@ fun AppNavigation() {
     Scaffold(
         bottomBar = {
             NavigationBar {
-                items.forEachIndexed { index, screen ->
+                items.forEachIndexed { _, screen ->
                     NavigationBarItem(
                         icon = { when (screen) {
                             Screen.Countries -> Icon(Icons.Filled.LocationOn, contentDescription = "Countries")
