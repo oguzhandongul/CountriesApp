@@ -20,6 +20,4 @@ object ProfileModule {
     @Singleton
     @Provides
     fun provideProfileRepo(context: Context): ProfileRepository = ProfileRepositoryImpl(context = context)
-
-
 }

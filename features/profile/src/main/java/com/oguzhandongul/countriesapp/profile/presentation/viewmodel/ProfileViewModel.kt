@@ -25,10 +25,11 @@ class ProfileViewModel @Inject constructor(
 
     fun loadProfileData() {
         viewModelScope.launch {
-            try {
-                val profileDataResult = getProfileDataUseCase()
-                _uiState.value = ProfileUiState.Success(profileDataResult)
-            } catch (exception: Exception) {
+            _uiState.value = ProfileUiState.Loading
+            val result = getProfileDataUseCase().getOrNull()
+            if (result != null) {
+                _uiState.value = ProfileUiState.Success(result)
+            } else {
                 _uiState.value = ProfileUiState.Error("Failed to load profile")
             }
         }

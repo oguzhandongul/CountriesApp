@@ -61,7 +61,14 @@ dependencies {
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
-    testImplementation(libs.junit)
+
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    testImplementation(libs.junit)
+    testImplementation(libs.mockito)
+    testImplementation(libs.mockito.test)
+    testImplementation(libs.mockito.inline)
+    testImplementation(libs.kotlin.test)
+    testImplementation (libs.moshi)
+    testImplementation (libs.moshi.kotlin)
 }

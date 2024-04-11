@@ -10,9 +10,9 @@ import javax.inject.Inject
 class ProfileRepositoryImpl @Inject constructor(private val context: Context) : ProfileRepository {
     private val profileDataAdapter = ProfileDataAdapter
 
-    override suspend fun getProfileData(): ProfileData {
+    override suspend fun getProfileData(): Result<ProfileData> {
         val inputStream = context.resources.openRawResource(R.raw.profile)
         val json = inputStream.bufferedReader().use { it.readText() }
-        return profileDataAdapter.adapter.fromJson(json)!!
+        return Result.success(profileDataAdapter.adapter.fromJson(json)!!)
     }
 }

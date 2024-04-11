@@ -5,5 +5,5 @@ import com.oguzhandongul.countriesapp.profile.domain.repository.ProfileRepositor
 import javax.inject.Inject
 
 class GetProfileDataUseCase @Inject constructor(private val profileRepository: ProfileRepository) {
-    suspend operator fun invoke(): ProfileData = profileRepository.getProfileData()
+    suspend operator fun invoke(): Result<ProfileData> = profileRepository.getProfileData()
 }
