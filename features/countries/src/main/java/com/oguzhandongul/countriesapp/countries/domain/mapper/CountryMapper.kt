@@ -7,7 +7,7 @@ import com.oguzhandongul.countriesapp.countries.domain.model.CountryDetail
 fun CountryResponse.toCountryDetail(): CountryDetail {
     return CountryDetail(
         name = name.common,
-        capital = capital?.firstOrNull(),
+        capital = capital?.firstOrNull() ?: "N/A",
         currency = currencies?.values?.firstOrNull()?.let { "${it.name} (${it.symbol})" } ?: "N/A",
         area = "${area.toInt()} sq km", // Add formatting if needed
         population = population.toString(), // Add formatting if needed

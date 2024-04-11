@@ -7,7 +7,9 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -23,10 +25,12 @@ import com.oguzhandongul.countriesapp.countries.domain.model.CountryDetail
 
 @Composable
 fun CountryDetailContent(countryDetail: CountryDetail) {
+    val scrollState = rememberScrollState() // Remember scroll position
+
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(Dimensions.medium),
+            .padding(Dimensions.medium).verticalScroll(scrollState),
         horizontalAlignment = Alignment.CenterHorizontally // Optional: center content horizontally
     ) {
         CoilImage(
@@ -42,16 +46,16 @@ fun CountryDetailContent(countryDetail: CountryDetail) {
             style = CountriesTypography.titleLarge
         )
 
-        Spacer(modifier = Modifier.height(8.dp))
+        Spacer(modifier = Modifier.height(Dimensions.small))
 
         // Display other details
         DetailItem(
             label = stringResource(id = R.string.content_capital_title),
-            value = countryDetail.capital ?: "N/A"
+            value = countryDetail.capital
         )
         DetailItem(
             label = stringResource(id = R.string.content_currency_title),
-            value = countryDetail.currency ?: "N/A"
+            value = countryDetail.currency
         )
         DetailItem(
             label = stringResource(id = R.string.content_area_title),
@@ -67,7 +71,7 @@ fun CountryDetailContent(countryDetail: CountryDetail) {
         )
         DetailItem(
             label = stringResource(id = R.string.content_languages_title),
-            value = countryDetail.languages ?: "N/A"
+            value = countryDetail.languages
         )
     }
 }
