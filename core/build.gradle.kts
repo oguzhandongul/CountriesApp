@@ -1,22 +1,17 @@
 plugins {
-    alias(libs.plugins.androidApplication)
+    alias(libs.plugins.androidLibrary)
     alias(libs.plugins.jetbrainsKotlinAndroid)
-    alias(libs.plugins.ksp)
-    alias(libs.plugins.hiltPlugin)
 }
 
 android {
-    namespace = "com.oguzhandongul.countriesapp"
+    namespace = "com.oguzhandongul.countriesapp.core"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.oguzhandongul.countriesapp"
         minSdk = 24
-        targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
@@ -35,9 +30,6 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-    hilt {
-        enableAggregatingTask = true
-    }
     buildFeatures {
         compose = true
     }
@@ -48,24 +40,14 @@ android {
 
 dependencies {
 
-    implementation(project(":core"))
-    implementation(project(":features:profile"))
-
-    implementation(libs.timber)
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.ui)
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
-    implementation(libs.navigation.compose)
-    implementation(libs.hilt.android)
-    ksp(libs.hilt.compiler)
+    implementation(libs.coil)
 
-    implementation(libs.androidx.core.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
