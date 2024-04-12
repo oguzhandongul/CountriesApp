@@ -29,25 +29,37 @@ fun AppNavigation() {
     val mainViewModel = viewModel<MainViewModel>()
     val navController = rememberNavController()
     val items = listOf(Screen.Countries, Screen.Profile)
-    mainViewModel.currentScreen.collectAsState().value // Track selected screen
+    var selected = mainViewModel.currentScreen.collectAsState().value // Track selected screen
 
     Scaffold(
         bottomBar = {
             NavigationBar {
-                items.forEachIndexed { _, screen ->
+                items.forEachIndexed { index, screen ->
                     NavigationBarItem(
-                        icon = { when (screen) {
-                            Screen.Countries, Screen.CountryDetail -> Icon(Icons.Filled.LocationOn, contentDescription = "Countries")
-                            Screen.Profile   -> Icon(Icons.Filled.Person, contentDescription = "Profile")
-                        }},
+                        icon = {
+                            when (screen) {
+                                Screen.Countries, Screen.CountryDetail -> Icon(
+                                    Icons.Filled.LocationOn,
+                                    contentDescription = "Countries"
+                                )
+
+                                Screen.Profile -> Icon(
+                                    Icons.Filled.Person,
+                                    contentDescription = "Profile"
+                                )
+                            }
+                        },
                         label = { Text(screen.route) },
                         selected = mainViewModel.currentScreen.value == screen, // Read from ViewModel
                         onClick = {
-                            mainViewModel.selectScreen(screen) // Update ViewModel state
-                            navController.navigate(screen.route) {
-                                popUpTo(navController.graph.id)
-                                launchSingleTop = true
+                            if (selected != screen) {
+                                mainViewModel.selectScreen(screen) // Update ViewModel state
+                                navController.navigate(screen.route) {
+                                    popUpTo(navController.graph.id)
+                                    launchSingleTop = true
+                                }
                             }
+
                         }
                     )
                 }
@@ -59,9 +71,27 @@ fun AppNavigation() {
             startDestination = Screen.Countries.route,
             Modifier.padding(innerPadding)
         ) {
-            composable(Screen.Countries.route) { CountrySelectionScreen(navController) } // Use ViewModel
-            composable(Screen.Profile.route) { ProfileScreen(navController) }       // Use ViewModel
-            composable(  "${Screen.CountryDetail.route}/{name}", enterTransition = {
+            composable(Screen.Countries.route, enterTransition = {
+                return@composable slideIntoContainer(
+                    AnimatedContentTransitionScope.SlideDirection.End, tween(700)
+                )
+            },
+                popExitTransition = {
+                    return@composable slideOutOfContainer(
+                        AnimatedContentTransitionScope.SlideDirection.Start, tween(700)
+                    )
+                }) { CountrySelectionScreen(navController) } // Use ViewModel
+            composable(Screen.Profile.route, enterTransition = {
+                return@composable slideIntoContainer(
+                    AnimatedContentTransitionScope.SlideDirection.Start, tween(700)
+                )
+            },
+                popExitTransition = {
+                    return@composable slideOutOfContainer(
+                        AnimatedContentTransitionScope.SlideDirection.End, tween(700)
+                    )
+                }) { ProfileScreen(navController) }       // Use ViewModel
+            composable("${Screen.CountryDetail.route}/{name}", enterTransition = {
                 return@composable slideIntoContainer(
                     AnimatedContentTransitionScope.SlideDirection.Up, tween(700)
                 )
@@ -70,7 +100,7 @@ fun AppNavigation() {
                     return@composable slideOutOfContainer(
                         AnimatedContentTransitionScope.SlideDirection.Down, tween(700)
                     )
-                }){ backStackEntry ->
+                }) { backStackEntry ->
                 val name = backStackEntry.arguments?.getString("name")
                 if (name != null) {
                     CountryDetailScreen(name = name)
