@@ -55,8 +55,11 @@ fun AppNavigation() {
                             if (selected != screen) {
                                 mainViewModel.selectScreen(screen) // Update ViewModel state
                                 navController.navigate(screen.route) {
-                                    popUpTo(navController.graph.id)
+                                    popUpTo(navController.graph.id){
+                                        saveState = true
+                                    }
                                     launchSingleTop = true
+                                    restoreState = true
                                 }
                             }
 
@@ -71,26 +74,8 @@ fun AppNavigation() {
             startDestination = Screen.Countries.route,
             Modifier.padding(innerPadding)
         ) {
-            composable(Screen.Countries.route, enterTransition = {
-                return@composable slideIntoContainer(
-                    AnimatedContentTransitionScope.SlideDirection.End, tween(700)
-                )
-            },
-                popExitTransition = {
-                    return@composable slideOutOfContainer(
-                        AnimatedContentTransitionScope.SlideDirection.Start, tween(700)
-                    )
-                }) { CountrySelectionScreen(navController) } // Use ViewModel
-            composable(Screen.Profile.route, enterTransition = {
-                return@composable slideIntoContainer(
-                    AnimatedContentTransitionScope.SlideDirection.Start, tween(700)
-                )
-            },
-                popExitTransition = {
-                    return@composable slideOutOfContainer(
-                        AnimatedContentTransitionScope.SlideDirection.End, tween(700)
-                    )
-                }) { ProfileScreen(navController) }       // Use ViewModel
+            composable(Screen.Countries.route) { CountrySelectionScreen(navController) } // Use ViewModel
+            composable(Screen.Profile.route) { ProfileScreen(navController) }       // Use ViewModel
             composable("${Screen.CountryDetail.route}/{name}", enterTransition = {
                 return@composable slideIntoContainer(
                     AnimatedContentTransitionScope.SlideDirection.Up, tween(700)
@@ -105,6 +90,7 @@ fun AppNavigation() {
                 if (name != null) {
                     CountryDetailScreen(name = name)
                 }
+                selected = Screen.CountryDetail
             }
         }
     }

@@ -35,7 +35,8 @@ class CountriesViewModel @Inject constructor(
             if (result != null) {
                 _uiState.value = CountriesUiState.Success(result)
             } else {
-                _uiState.value = CountriesUiState.Error(resourceHelper.getString(R.string.error_loading_list))
+                _uiState.value =
+                    CountriesUiState.Error(resourceHelper.getString(R.string.error_loading_list))
             }
         }
     }
