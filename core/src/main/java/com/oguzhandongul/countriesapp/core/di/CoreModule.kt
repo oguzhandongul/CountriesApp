@@ -1,6 +1,9 @@
 package com.oguzhandongul.countriesapp.core.di
 
 import android.content.Context
+import com.oguzhandongul.countriesapp.core.utils.BASE_URL
+import com.oguzhandongul.countriesapp.core.utils.NETWORK_CONNECT_TIMEOUT_SECONDS
+import com.oguzhandongul.countriesapp.core.utils.NETWORK_READ_TIMEOUT_SECONDS
 import com.oguzhandongul.countriesapp.core.utils.ResourceHelper
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -15,10 +18,6 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
-
-private const val NETWORK_CONNECT_TIMEOUT_SECONDS = 30L
-private const val NETWORK_READ_TIMEOUT_SECONDS = 60L
-private const val BASE_URL = "https://restcountries.com/"
 
 @Module
 @InstallIn(SingletonComponent::class)

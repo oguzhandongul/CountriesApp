@@ -8,12 +8,13 @@ import coil.compose.rememberAsyncImagePainter
 import coil.request.CachePolicy
 import coil.request.ImageRequest
 import com.oguzhandongul.countriesapp.core.R
+import com.oguzhandongul.countriesapp.core.utils.ANIM_DURATION_CROSS_FADE
 
 @Composable
 fun CoilImage(url: String, modifier: Modifier = Modifier) {
     val request = ImageRequest.Builder(LocalContext.current)
         .data(url)
-        .crossfade(1000)
+        .crossfade(ANIM_DURATION_CROSS_FADE)
         .placeholder(R.drawable.placeholder_image_24)
         .error(R.drawable.placeholder_image_24)
         .memoryCachePolicy(CachePolicy.ENABLED)

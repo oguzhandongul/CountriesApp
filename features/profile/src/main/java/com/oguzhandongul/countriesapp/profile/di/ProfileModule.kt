@@ -1,12 +1,11 @@
 package com.oguzhandongul.countriesapp.profile.di
 
-import android.content.Context
+import com.oguzhandongul.countriesapp.core.utils.ResourceHelper
 import com.oguzhandongul.countriesapp.profile.data.repository.ProfileRepositoryImpl
 import com.oguzhandongul.countriesapp.profile.domain.repository.ProfileRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
@@ -16,5 +15,6 @@ object ProfileModule {
 
     @Singleton
     @Provides
-    fun provideProfileRepo(context: Context): ProfileRepository = ProfileRepositoryImpl(context = context)
+    fun provideProfileRepo(resourceHelper: ResourceHelper): ProfileRepository =
+        ProfileRepositoryImpl(resourceHelper = resourceHelper)
 }

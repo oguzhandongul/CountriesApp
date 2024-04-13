@@ -2,6 +2,7 @@ package com.oguzhandongul.countriesapp.core.utils
 
 import android.content.Context
 import dagger.hilt.android.qualifiers.ApplicationContext
+import java.io.InputStream
 import javax.inject.Inject
 
 class ResourceHelper @Inject constructor(@ApplicationContext private val context: Context) {
@@ -12,6 +13,10 @@ class ResourceHelper @Inject constructor(@ApplicationContext private val context
 
     fun getStringArray(resId: Int): List<String> {
         return context.resources.getStringArray(resId).asList()
+    }
+
+    fun getRaw(resId: Int): InputStream {
+        return context.resources.openRawResource(resId)
     }
 
     // Optionally we can add other methods for accessing different resources like drawables, colors, etc.
