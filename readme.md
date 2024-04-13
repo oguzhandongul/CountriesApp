@@ -74,3 +74,9 @@ Navigation between screens is handled by the `AppNavigation` class using Jetpack
 -   Country details API: [REST Countries](https://restcountries.com/#api-endpoints-v3-all)
 
 ## Screenshots
+
+### Profile Screen ![Profile Screen](Screenshot_20240413_153634.png)
+
+### Countries List ![Countries List](Screenshot_20240413_153517.png)
+
+### Country Detail Screen ![Country Detail Screen](Screenshot_20240413_153613.png)
