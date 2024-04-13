@@ -17,7 +17,7 @@ fun CountrySelectionScreen(
 ) {
     val uiState by viewModel.uiState.collectAsState()
 
-    val onRetryClicked: () -> Unit = { viewModel.loadCountrieseData() }
+    val onRetryClicked: () -> Unit = { viewModel.loadCountriesData() }
 
     when (uiState) {
         CountriesUiState.Loading -> {

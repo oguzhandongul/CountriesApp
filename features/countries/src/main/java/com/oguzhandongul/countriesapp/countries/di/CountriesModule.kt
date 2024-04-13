@@ -1,6 +1,6 @@
 package com.oguzhandongul.countriesapp.countries.di
 
-import android.content.Context
+import com.oguzhandongul.countriesapp.core.utils.ResourceHelper
 import com.oguzhandongul.countriesapp.countries.data.remote.ApiService
 import com.oguzhandongul.countriesapp.countries.data.repository.CountriesRepositoryImpl
 import com.oguzhandongul.countriesapp.countries.domain.repository.CountriesRepository
@@ -23,7 +23,10 @@ object CountriesModule {
 
     @Singleton
     @Provides
-    fun provideCountriesRepo(apiService: ApiService, context: Context): CountriesRepository =
-        CountriesRepositoryImpl(apiService = apiService, context = context)
+    fun provideCountriesRepo(
+        resourceHelper: ResourceHelper,
+        apiService: ApiService
+    ): CountriesRepository =
+        CountriesRepositoryImpl(apiService = apiService, resourceHelper = resourceHelper)
 
 }

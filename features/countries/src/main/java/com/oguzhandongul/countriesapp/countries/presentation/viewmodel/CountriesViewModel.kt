@@ -25,10 +25,10 @@ class CountriesViewModel @Inject constructor(
     val uiState: StateFlow<CountriesUiState> = _uiState.asStateFlow()
 
     init {
-        loadCountrieseData()
+        loadCountriesData()
     }
 
-    fun loadCountrieseData() {
+    fun loadCountriesData() {
         viewModelScope.launch {
             _uiState.value = CountriesUiState.Loading
             val result = getCountriesUseCase().getOrNull()
