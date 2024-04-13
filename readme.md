@@ -59,7 +59,7 @@ Unit tests are provided for ViewModel logic, use cases, and repository interacti
 
 1.  Clone the repository:
 
-    `git clone https://github.com/yourusername/CountriesApp.git`
+    `git clone https://github.com/oguzhandongul/CountriesApp.git`
 
 2.  Open the project in Android Studio.
 3.  Build and run the application.
