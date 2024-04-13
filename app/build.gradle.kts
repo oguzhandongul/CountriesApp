@@ -40,6 +40,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.11"
@@ -50,6 +51,7 @@ dependencies {
 
     implementation(project(":core"))
     implementation(project(":features:profile"))
+    implementation(project(":features:countries"))
 
     implementation(libs.timber)
     implementation(libs.androidx.core.ktx)
